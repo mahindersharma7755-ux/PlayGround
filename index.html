@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#101619" />
+  <title>Neon Run — City Pursuit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <main id="game" aria-label="Neon Run city driving game">
+    <canvas id="scene"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Neon Run home"><span class="brand-mark">N</span><span>NEON<span class="brand-light">RUN</span></span></a>
+      <div class="location"><span class="location-dot"></span><span id="district">DOWNTOWN · LOS SANTOS</span></div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound"><span id="soundIcon">♫</span></button>
+    </header>
+
+    <section class="hud" id="hud" aria-live="polite">
+      <div class="hud-left">
+        <div class="wanted-card panel">
+          <div class="eyebrow">WANTED LEVEL <span class="live-dot"></span></div>
+          <div class="stars" id="stars" aria-label="zero wanted stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="status-line"><span class="status-pulse"></span><span id="statusText">PATROL UNAWARE</span></div>
+        </div>
+        <div class="speed-card panel">
+          <div class="speed-number"><span id="speed">000</span><small>MPH</small></div>
+          <div class="speed-track"><i id="speedBar"></i></div>
+          <div class="car-label"><span class="engine-dot"></span> VAPID DOMINATOR <span class="gear" id="gear">N</span></div>
+        </div>
+      </div>
+      <div class="hud-right">
+        <div class="mini-map panel"><div class="map-label">CITY GRID <span>● LIVE</span></div><canvas id="map" width="180" height="180"></canvas><div class="map-footer"><span>VESPUCCI BLVD</span><span id="mapCoords">34.052 / 118.244</span></div></div>
+        <div class="objective panel"><div class="eyebrow">GETAWAY OBJECTIVE</div><div class="objective-title" id="objectiveTitle">LOSE THE HEAT</div><div class="objective-copy" id="objectiveCopy">Break line of sight and survive the pursuit.</div><div class="timer-row"><span>TIME TO ESCAPE</span><strong id="timer">01:30</strong></div><div class="objective-track"><i id="objectiveBar"></i></div></div>
+      </div>
+    </section>
+
+    <div class="toast" id="toast"><span class="toast-icon">!</span><span id="toastText">POLICE SCANNER: Units responding</span></div>
+    <div class="controls-hint" id="controlsHint"><span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span><span>DRIVE</span><span class="hint-divider"></span><span class="keycap wide">⇧</span><span>BOOST</span><span class="hint-divider"></span><span class="keycap wide">SPACE</span><span>HANDBRAKE</span></div>
+    <div class="damage-flash" id="damageFlash"></div>
+
+    <section class="screen intro-screen" id="introScreen">
+      <div class="intro-content">
+        <div class="intro-kicker"><span class="kicker-line"></span> SAN ANDREAS · 11:47 PM <span class="kicker-line"></span></div>
+        <h1>THE CITY<br><em>IS YOURS.</em></h1>
+        <p>One ride. A thousand ways out.<br>How long can you stay ahead?</p>
+        <button class="start-button" id="startButton"><span>START THE GETAWAY</span><b>↗</b></button>
+        <div class="intro-foot"><span>THIRD-PERSON CITY PURSUIT</span><span>01 — 90 SECONDS TO FREEDOM</span></div>
+      </div>
+      <div class="intro-side-note">NO BACKUP. NO PLAN B.<br>JUST KEEP MOVING.</div>
+      <div class="intro-bottom">LOS SANTOS POLICE DEPARTMENT <span>·</span> DISPATCH ACTIVE</div>
+    </section>
+
+    <section class="screen result-screen hidden" id="resultScreen">
+      <div class="result-content"><div class="intro-kicker"><span class="kicker-line"></span><span id="resultKicker">PURSUIT COMPLETE</span><span class="kicker-line"></span></div><h2 id="resultTitle">CLEAN<br><em>GETAWAY.</em></h2><p id="resultCopy">They lost you in the city lights.</p><div class="result-stats"><div><span>DISTANCE COVERED</span><strong id="finalDistance">0.0 <small>MI</small></strong></div><div><span>TOP SPEED</span><strong id="topSpeed">0 <small>MPH</small></strong></div><div><span>TIME ON THE RUN</span><strong id="runTime">00:00</strong></div></div><button class="start-button" id="restartButton"><span>RUN IT BACK</span><b>↻</b></button></div>
+    </section>
+
+    <div class="mobile-controls" id="mobileControls"><div class="steer-pad"><button data-control="a" aria-label="Steer left">‹</button><button data-control="d" aria-label="Steer right">›</button></div><div class="pedal-pad"><button data-control="w" class="gas" aria-label="Accelerate">▲</button><button data-control="s" aria-label="Brake">▼</button><button data-control="shift" class="boost" aria-label="Boost">BOOST</button></div></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
