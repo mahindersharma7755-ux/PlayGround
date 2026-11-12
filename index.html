@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#061518" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='17' fill='%23061518' stroke='%2370e1c0'/%3E%3Ctext x='20' y='26' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%2370e1c0'%3EM%3C/text%3E%3C/svg%3E" />
+  <title>Millipool: Tidal Circuit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <div id="scene-wrap"><canvas id="game-canvas" aria-label="3D pool game"></canvas></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Millipool home"><span class="brand-mark">M</span><span>MILLI<span class="brand-light">POOL</span></span></a>
+      <div class="level-tag"><span class="live-dot"></span> SECTOR 04 <b>/</b> TIDAL CIRCUIT</div>
+      <button id="sound-btn" class="icon-btn" aria-label="Toggle sound" title="Toggle sound">♫</button>
+    </header>
+    <section class="hud">
+      <div class="mission-card glass">
+        <p class="eyebrow">CURRENT OBJECTIVE <span class="mission-icon">✳</span></p>
+        <h1>Clear the<br><em>tide pool.</em></h1>
+        <p class="mission-copy">Sink every pearl. Keep the white core out of the pockets.</p>
+        <div class="progress-line"><div id="progress-fill"></div></div>
+        <div class="progress-label"><span><b id="score-count">0</b> / 6 PEARLS</span><span id="shot-count">0 SHOTS</span></div>
+        <div class="divider"></div>
+        <div class="status-row"><span class="status-icon">◉</span><span>CORE STABILITY</span><b id="stability">100%</b></div>
+        <div class="stability-track"><div id="stability-fill"></div></div>
+      </div>
+      <div class="power-card glass"><span class="eyebrow">SHOT CHARGE</span><div class="power-track"><div id="power-fill"></div></div><span id="power-label">READY</span></div>
+    </section>
+    <div class="bottom-hint"><span class="mouse-icon">↖</span><span>DRAG BACK TO AIM <i>·</i> RELEASE TO SHOOT</span><span class="hint-key">SPACE</span><span> TIDAL PULSE</span></div>
+    <div class="toast" id="toast" aria-live="polite"></div>
+    <div class="modal" id="intro-modal">
+      <div class="modal-card glass">
+        <div class="modal-orb">✳</div>
+        <p class="eyebrow">A POCKET-SIZED OCEAN</p>
+        <h2>Millipool<span>:</span><br><em>Tidal Circuit</em></h2>
+        <p>Send the six luminous pearls into the reef pockets. Your white core is precious—don't let it fall in.</p>
+        <div class="howto"><span><b>01</b> Pull back from the core to line up your shot.</span><span><b>02</b> Release to launch. Longer pull means more power.</span><span><b>03</b> Tap <kbd>SPACE</kbd> for a tidal pulse that bends nearby pearls.</span></div>
+        <button id="play-btn" class="play-btn">DIVE IN <span>↗</span></button>
+        <div class="modal-foot">A NEW REEF. A NEW CURRENT.</div>
+      </div>
+    </div>
+    <div class="win-modal modal hidden" id="win-modal"><div class="modal-card glass"><div class="modal-orb">✦</div><p class="eyebrow">SECTOR COMPLETE</p><h2>The reef is<br><em>in balance.</em></h2><p id="win-copy">Every pearl found its way home.</p><button id="again-btn" class="play-btn">PLAY AGAIN <span>↻</span></button></div></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
